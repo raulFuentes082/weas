@@ -1,0 +1,5 @@
+Errores a corregir
+1. Verificar extencion de archivos de video (courses/library)
+2. Agregar inscripciones de cursos (enrollments)
+3. Agregar edicion de cursos (courses/edit-course)
+4. Evitar borrado de cursos en la base de datos
