@@ -1,0 +1,51 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Donante / Socio" as Donante
+actor "Paciente" as Paciente
+actor "Empresa Donante" as Empresa
+actor "Vicerrector / Admin" as Admin
+
+rectangle "Plataforma Web Fundación" {
+  (UC01: Visualizar Dashboard de Impacto) as UC01
+  (UC02: Realizar Donación Única) as UC02
+  (UC03: Suscribirse como Socio Recurrente) as UC03
+  (Procesar Pago por API) as UC_Pago
+  (Generar Comprobante/Certificado) as UC_Cert
+  
+  (UC04: Consultar Disponibilidad de Horas) as UC04
+  (UC05: Reservar Hora Médica / Terapia) as UC05
+  
+  (UC07: Consultar Proyectos Ley 21.440) as UC07
+  (UC08: Solicitar Certificado N° 60 SII) as UC08
+  
+  (UC09: Gestionar Agenda Médica) as UC09
+  (UC10: Actualizar Métricas de Transparencia) as UC10
+  (UC11: Conciliar Donaciones y Rendición SII) as UC11
+  
+   ' Relaciones Include
+   UC03 ..> UC_Pago : <<include>>
+   UC03 ..> UC_Cert : <<include>>
+   UC02 ..> UC_Pago : <<include>>
+   UC05 ..> UC_Pago : <<include>>
+   UC08 ..> UC_Cert : <<include>>
+}
+
+' Conexiones de Actores
+Donante --> UC01
+Donante --> UC02
+Donante --> UC03
+
+Paciente --> UC04
+Paciente --> UC05
+
+Empresa --> UC07
+Empresa --> UC08
+
+Admin --> UC09
+Admin --> UC10
+Admin --> UC11
+
+@enduml
